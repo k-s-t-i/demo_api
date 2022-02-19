@@ -12,15 +12,10 @@ class RequestModel(BaseModel):
     amount: Decimal
 
 
-# class ResponseModel(BaseModel):
-#     timestamp: str = ""
-#     price: Union[float, str] = ""
-#     quantity: str = ""
-
-
 @app.get("/")
 def root_get():
     return {"description": "Hello coder!"}
+
 
 @app.post("/btceur")
 async def btc_eur_price(btc_ask: RequestModel):

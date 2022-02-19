@@ -4,6 +4,8 @@ import json
 from decimal import Decimal
 
 log = logging.getLogger(__name__)
+
+
 async def calculate_btceur_price(btc_ask: Decimal) -> dict:
     if btc_ask <= 0.0:
         log.error(f"Invalid btc_ask: {btc_ask}")
