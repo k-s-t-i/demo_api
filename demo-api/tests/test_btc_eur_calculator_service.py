@@ -1,6 +1,5 @@
-import unittest
+from unittest import IsolatedAsyncioTestCase
 from unittest.mock import patch
-from decimal import Decimal
 from demo_api.btc_eur_calculator_service import calculate_btceur_price
 
 websocket_response = {
@@ -25,7 +24,7 @@ def mocked_websocket_response(*args, **kwargs):
     return MockResponse(None)
 
 
-class TestBtcEurCalculatorService(unittest.TestCase):
+class TestBtcEurCalculatorService(IsolatedAsyncioTestCase):
     @patch("websockets.connect", side_effect=mocked_websocket_response)
     async def test_validate_equal(self):
         self.assertEqual(await calculate_btceur_price(3.0), {'btc_ask': 12000.18})

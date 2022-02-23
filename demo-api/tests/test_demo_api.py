@@ -18,7 +18,7 @@ client = TestClient(app)
         hypothesis.HealthCheck.too_slow,
     ]
 )
-def test_fuzz(self, case):
+def test_fuzz(case):
     response: requests.Response = case.call(
         session=client,
     )
@@ -26,25 +26,25 @@ def test_fuzz(self, case):
     case.validate_response(response)
 
 
-def test_btceur_calculator_endpoint_success(self):
+def test_btceur_calculator_endpoint_success():
     request_json = {"btc_ask": 0.00011}
     response = client.post("/btceur", json=request_json)
     assert response.status_code == 200
 
 
-def test_negative_value_case(self):
+def test_negative_value_case():
     request_json = {"btc_ask": -1}
     response = client.post("/btceur", json=request_json)
     assert response.status_code == 200
 
 
-def test_zero_value_case(self):
+def test_zero_value_case():
     request_json = {"btc_ask": 0}
     response = client.post("/btceur", json=request_json)
     assert response.status_code == 200
 
 
-def test_url_not_found(self):
+def test_url_not_found():
     request_json = {"btc_ask": 6}
     response = client.post("/btceury", json=request_json)
     assert response.status_code == 404
