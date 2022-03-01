@@ -26,6 +26,14 @@ Run:
 Running a development server:
 - You can use `make run` to automatically run your development server
 
+## Testing
+
+You can use the following commands for testing:
+- `poetry run pytest tests/test_demo_api.py`
+- `poetry run python -m unittest tests/test_btc_eur_calculator_service.py`
+
+I have added them both in the `makefile` and they can be run by `make test`.
+
 ## Code formatting
 
 Mypy and Black are used for code formatting. All code formatting rules have already been specified.
